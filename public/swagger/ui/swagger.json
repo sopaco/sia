@@ -1,0 +1,1370 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "私银贵族-会所API",
+        "description": "私银贵族-会所API",
+        "version": "1.0.0"
+    },
+    "host": "api-places.tongren.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v1",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/places_suggestion": {
+            "get": {
+                "summary": "首页会所Banner位",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "tags": [
+                    "首页"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "banner结构",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActivityBanner"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_main": {
+            "get": {
+                "summary": "首页会所列表",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "sortType",
+                        "in": "query",
+                        "description": "排序类型(1=热度最高;2=销量最高;3=距离最近;4=价格最低;5=价格最高)",
+                        "required": true,
+                        "type": "number",
+                        "format": "number"
+                    }
+                ],
+                "tags": [
+                    "首页"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所列表",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PlaceInfo_Simple"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_search": {
+            "get": {
+                "summary": "会所搜索",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "description": "搜索关键字",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "搜索"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所列表",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PlaceInfo_Simple"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/city_hot": {
+            "get": {
+                "summary": "定位-热门区域",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "tags": [
+                    "定位"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "定位-热门区域",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/GeoInfo"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/search_nearby": {
+            "get": {
+                "summary": "搜索附近会所",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "tags": [
+                    "搜索"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "搜索附近会所",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PlaceInfo_Simple"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_hot": {
+            "get": {
+                "summary": "搜索-热词",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude component of location.",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "description": "搜索关键字",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "首页"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所列表",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PlaceInfo_Simple"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_myfavorite": {
+            "get": {
+                "summary": "会所收藏列表",
+                "description": "",
+                "tags": [
+                    "收藏"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所列表",
+                        "schema": {
+                            "$ref": "#/definitions/PlacesSeachResult"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_detail": {
+            "get": {
+                "summary": "获取会所详情",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "会所ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "会所详情"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所详情",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PlaceInfo_Detail"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_commentlist": {
+            "get": {
+                "summary": "获取会所评论",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "会所ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "会所详情"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所评论",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PlaceComment"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_favorite": {
+            "get": {
+                "summary": "收藏／取消收藏",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "会所ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "favorite",
+                        "in": "query",
+                        "description": "是否收藏",
+                        "required": true,
+                        "type": "boolean"
+                    }
+                ],
+                "tags": [
+                    "收藏"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所评论",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/places_introduce": {
+            "get": {
+                "summary": "酒店介绍",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "会所ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "favorite",
+                        "in": "query",
+                        "description": "是否收藏",
+                        "required": true,
+                        "type": "boolean"
+                    }
+                ],
+                "tags": [
+                    "会所详情"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所评论",
+                        "schema": {
+                            "$ref": "#/definitions/PlaceInfo_Intro"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_booking": {
+            "post": {
+                "summary": "生单",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "会所ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "arriveTime",
+                        "in": "query",
+                        "description": "到店时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "departTime",
+                        "in": "query",
+                        "description": "离店时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "seatingNumber",
+                        "in": "query",
+                        "description": "人数",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "invoiceType",
+                        "in": "query",
+                        "description": "发票类型（0=无发票;1=个人;2=公司）",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "invoiceTitle",
+                        "in": "query",
+                        "description": "发票抬头",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "payChannel",
+                        "in": "query",
+                        "description": "支付方式(0=支付宝;1=微信)",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "couponId",
+                        "in": "query",
+                        "description": "优惠券ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "remarks",
+                        "in": "query",
+                        "description": "订单留言",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "生单支付"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "生单结果",
+                        "schema": {
+                            "$ref": "#/definitions/OrderBookingResult"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_prepay": {
+            "post": {
+                "summary": "支付前校验",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "生单支付"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "支付前校验结果",
+                        "schema": {
+                            "$ref": "#/definitions/PrepayResult"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_postpay": {
+            "post": {
+                "summary": "支付后校验",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "生单支付"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "会所评论",
+                        "schema": {
+                            "$ref": "#/definitions/PostPayResult"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_query_detail": {
+            "post": {
+                "summary": "订单详情查询",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "订单管理"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "订单信息",
+                        "schema": {
+                            "$ref": "#/definitions/OrderInfo"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_query_list": {
+            "post": {
+                "summary": "订单列表查询",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "typeId",
+                        "in": "query",
+                        "description": "订单状态(0=未消费;1=已消费)",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "订单管理"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "订单列表",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/OrderInfo"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_cancel": {
+            "post": {
+                "summary": "取消订单",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "reason",
+                        "in": "query",
+                        "description": "取消订单原因描述",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "订单管理"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "取消订单"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_delete": {
+            "post": {
+                "summary": "删除订单",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "订单管理"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除订单"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_processflow_cancel": {
+            "get": {
+                "summary": "取消订单进度信息",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "订单管理"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "取消订单进度信息",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RefundProcessInfo"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_processflow_order": {
+            "get": {
+                "summary": "订单跟踪",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "订单管理"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "订单跟踪",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/OrderProcessInfo"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/order_comment": {
+            "post": {
+                "summary": "晒单",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "dataId",
+                        "in": "query",
+                        "description": "订单ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "comment",
+                        "in": "formData",
+                        "description": "评论内容",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "订单管理"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "晒单"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ActivityBanner": {
+            "properties": {
+                "userClickBehavior": {
+                    "description": "banner点击行为type(0=仅做展示;1=点击进入会;2=点击进入网页)",
+                    "type": "number",
+                    "format": "double"
+                },
+                "banner": {
+                    "description": "banner图片地址",
+                    "type": "string"
+                },
+                "data": {
+                    "description": "数据（具体含义取决于type）",
+                    "type": "string"
+                }
+            }
+        },
+        "PlaceInfo_Simple": {
+            "type": "object",
+            "properties": {
+                "product_id": {
+                    "type": "string",
+                    "description": "会所信息"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "会所介绍."
+                },
+                "display_name": {
+                    "type": "string",
+                    "description": "会所名称."
+                },
+                "price_vip": {
+                    "type": "string",
+                    "description": "尊享价."
+                },
+                "price": {
+                    "type": "string",
+                    "description": "原价."
+                },
+                "banner": {
+                    "type": "string",
+                    "description": "banner主图地址."
+                },
+                "geo": {
+                    "$ref": "#/definitions/GeoInfo"
+                }
+            }
+        },
+        "GeoInfo": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "description": "Latitude component of location.",
+                    "type": "number",
+                    "format": "double"
+                },
+                "longitude": {
+                    "description": "Longitude component of location.",
+                    "type": "number",
+                    "format": "double"
+                },
+                "shortName": {
+                    "description": "位置名称",
+                    "type": "string"
+                },
+                "address": {
+                    "description": "地址（[城市名][区域][街道地址]）",
+                    "type": "string"
+                }
+            }
+        },
+        "PlaceInfo_Detail": {
+            "type": "object",
+            "properties": {
+                "isFavorited": {
+                    "type": "boolean",
+                    "description": "是否已收藏"
+                },
+                "product_id": {
+                    "type": "string",
+                    "description": "会所信息"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "会所介绍"
+                },
+                "display_name": {
+                    "type": "string",
+                    "description": "会所名称"
+                },
+                "price_vip": {
+                    "type": "string",
+                    "description": "尊享价"
+                },
+                "price": {
+                    "type": "string",
+                    "description": "原价"
+                },
+                "banners": {
+                    "type": "array",
+                    "description": "banner地址数组",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "cost_details": {
+                    "description": "消费详情",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CostDetail"
+                    }
+                },
+                "serviceTip": {
+                    "description": "消费提示（比如：免费提供商务会谈场所）",
+                    "type": "string"
+                },
+                "reserveTip": {
+                    "description": "预定说明",
+                    "type": "string"
+                },
+                "serviceTags": {
+                    "description": "活动设施",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "geoOverviewImage": {
+                    "description": "地图预览图",
+                    "type": "string"
+                },
+                "geo": {
+                    "$ref": "#/definitions/GeoInfo"
+                }
+            }
+        },
+        "CostDetail": {
+            "properties": {
+                "name": {
+                    "description": "消费内容名称（比如：尊享SPA（1次））",
+                    "type": "string"
+                },
+                "price": {
+                    "description": "原价（图中最高价值）",
+                    "type": "string"
+                },
+                "price_vip": {
+                    "description": "尊享价",
+                    "type": "string"
+                }
+            }
+        },
+        "PlaceComment": {
+            "type": "object",
+            "properties": {
+                "rate": {
+                    "type": "integer",
+                    "description": "星级(0-5)"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "评价内容"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "点评用户名称"
+                }
+            }
+        },
+        "PlaceInfo_Intro": {
+            "properties": {
+                "assets": {
+                    "description": "会所设施列表",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "services": {
+                    "description": "会所服务列表",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "richIntroUrl": {
+                    "description": "会所图文介绍页URL",
+                    "type": "string"
+                }
+            }
+        },
+        "AliPayMeta": {
+            "properties": {
+                "alipay_PARTNER": {
+                    "description": "签约合作者身份ID",
+                    "type": "string"
+                },
+                "alipay_seller_id": {
+                    "description": "签约卖家支付宝账号",
+                    "type": "string"
+                },
+                "alipay_out_trade_no": {
+                    "description": "商户网站唯一订单号",
+                    "type": "string"
+                },
+                "alipay_subject": {
+                    "description": "商品名称",
+                    "type": "string"
+                },
+                "alipay_body": {
+                    "description": "商品详情",
+                    "type": "string"
+                },
+                "alipay_total_fee": {
+                    "description": "商品金额",
+                    "type": "string"
+                },
+                "alipay_notify_url": {
+                    "description": "服务器异步通知页面路径",
+                    "type": "string"
+                },
+                "alipay_service": {
+                    "description": "服务接口名称， 固定值",
+                    "type": "string"
+                },
+                "alipay_payment_type": {
+                    "description": "支付类型， 固定值",
+                    "type": "string"
+                },
+                "alipay_input_charset": {
+                    "description": "参数编码， 固定值",
+                    "type": "string"
+                },
+                "alipay_it_b_pay": {
+                    "description": "设置未付款交易的超时时间",
+                    "type": "string"
+                },
+                "alipay_return_url": {
+                    "description": "支付宝处理完请求后，当前页面跳转到商户指定页面的路径，可空",
+                    "type": "string"
+                }
+            }
+        },
+        "WxPayMeta": {
+            "properties": {
+                "wxpay_partnerId": {
+                    "description": "partnerId",
+                    "type": "string"
+                },
+                "wxpay_prepayId": {
+                    "description": "prepayId",
+                    "type": "string"
+                },
+                "wxpay_nonceStr": {
+                    "description": "nonceStr",
+                    "type": "string"
+                },
+                "wxpay_timeStamp": {
+                    "description": "timeStamp",
+                    "type": "string"
+                },
+                "wxpay_sign": {
+                    "description": "sign",
+                    "type": "string"
+                }
+            }
+        },
+        "OrderBookingResult": {
+            "properties": {
+                "orderDetail": {
+                    "description": "订单信息",
+                    "type": "object",
+                    "$ref": "#/definitions/OrderInfo"
+                },
+                "prepayResult": {
+                    "description": "支付前校验结果",
+                    "type": "object",
+                    "$ref": "#/definitions/PrepayResult"
+                }
+            }
+        },
+        "PrepayResult": {
+            "properties": {
+                "alipay_info": {
+                    "description": "支付宝终端支付参数",
+                    "type": "object",
+                    "$ref": "#/definitions/AliPayMeta"
+                },
+                "wxpay_info": {
+                    "description": "微信终端支付参数",
+                    "type": "object",
+                    "$ref": "#/definitions/WxPayMeta"
+                }
+            }
+        },
+        "PostPayResult": {
+            "properties": {
+                "orderDetail": {
+                    "description": "订单信息",
+                    "type": "object",
+                    "$ref": "#/definitions/OrderInfo"
+                }
+            }
+        },
+        "OrderInfo": {
+            "properties": {
+                "id": {
+                    "description": "订单ID",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "消费者订单状态",
+                    "type": "string"
+                },
+                "statusReadable": {
+                    "description": "显示的消费者订单状态文案",
+                    "type": "string"
+                },
+                "sellerStatus": {
+                    "description": "商家处理状态",
+                    "type": "string"
+                },
+                "sellerStatusReadable": {
+                    "description": "显示的商家处理状态",
+                    "type": "string"
+                },
+                "voucher": {
+                    "description": "消费券信息",
+                    "type": "object",
+                    "$ref": "#/definitions/Voucher"
+                },
+                "geoInfo": {
+                    "description": "消费券信息",
+                    "type": "object",
+                    "$ref": "#/definitions/GeoInfo"
+                },
+                "payChannel": {
+                    "description": "支付渠道(0=支付宝;1=微信)",
+                    "type": "string"
+                },
+                "invoiceType": {
+                    "description": "发票类型（0=无发票;1=个人;2=公司）",
+                    "type": "string"
+                },
+                "invoiceTitle": {
+                    "description": "发票抬头",
+                    "type": "string"
+                },
+                "arriveTime": {
+                    "description": "到店时间",
+                    "type": "string"
+                },
+                "duration": {
+                    "description": "有效时长",
+                    "type": "string"
+                },
+                "departTime": {
+                    "description": "离店实践",
+                    "type": "string"
+                },
+                "seatingNumber": {
+                    "description": "人数",
+                    "type": "string"
+                },
+                "chargesTable": {
+                    "description": "消费明细",
+                    "type": "object",
+                    "$ref": "#/definitions/ChargesTable"
+                },
+                "orderDate": {
+                    "description": "下单时间",
+                    "type": "string"
+                }
+            }
+        },
+        "ChargesTable": {
+            "description": "消费明细",
+            "properties": {
+                "price_actual": {
+                    "description": "实际支付价格",
+                    "type": "string"
+                },
+                "charges_list": {
+                    "description": "价格信息",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ChargeItem"
+                    }
+                },
+                "expiredDate": {
+                    "description": "有效期",
+                    "type": "string"
+                }
+            }
+        },
+        "ChargeItem": {
+            "properties": {
+                "name": {
+                    "description": "价格明目名称",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "价格增减量",
+                    "type": "string"
+                }
+            }
+        },
+        "Voucher": {
+            "description": "消费券信息",
+            "properties": {
+                "serialNumber": {
+                    "description": "消费券序号",
+                    "type": "string"
+                },
+                "recognition": {
+                    "description": "用于识别消费券条形码/二维码的数据",
+                    "type": "string"
+                },
+                "expiredDate": {
+                    "description": "有效期",
+                    "type": "string"
+                }
+            }
+        },
+        "PlacesSeachResult": {
+            "description": "会所搜索结果",
+            "properties": {
+                "bestMatches": {
+                    "description": "最佳搜索结果",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PlaceInfo_Simple"
+                    }
+                },
+                "suggestions": {
+                    "description": "模糊匹配搜索结果",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PlaceInfo_Simple"
+                    }
+                }
+            }
+        },
+        "RefundProcessInfo": {
+            "description": "退款进展信息",
+            "properties": {
+                "reason": {
+                    "description": "退款原因",
+                    "type": "string"
+                },
+                "statusReadable": {
+                    "description": "退款状态说明",
+                    "type": "string"
+                },
+                "processFlows": {
+                    "description": "进度流序列",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ProcessFlow"
+                    }
+                }
+            }
+        },
+        "OrderProcessInfo": {
+            "description": "订单跟踪信息",
+            "properties": {
+                "processFlows": {
+                    "description": "进度流序列",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ProcessFlow"
+                    }
+                }
+            }
+        },
+        "ProcessFlow": {
+            "properties": {
+                "description": {
+                    "description": "状态文案",
+                    "type": "string"
+                },
+                "date": {
+                    "description": "事件发生时间",
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

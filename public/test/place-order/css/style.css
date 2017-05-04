@@ -1,0 +1,32 @@
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input{ margin:0; padding:0;}
+body {  width:100%; margin: 0; -webkit-user-select: none; position: relative; background-color:#eeeff3;}
+.top-name{text-align:center;height: 90px;background-color: #666666;color:#ffcc66;line-height: 90px;font-size:40px;}
+
+.mt-1{margin: 20px;background-color: #fff;border: 1px solid #e2e2e2;border-radius:5px;display: flex;height: 100px;}
+.bt-1{font-size: 2.125em;color: #333333;line-height: 100px;margin-left: 20px;}
+.nr-1{font-size: 1.875em;color: #333333;float: left;line-height: 100px;margin-left: 30px;}
+
+.mt-2{margin: 20px;background-color: #fff;border: 1px solid #e2e2e2;border-radius:5px;display: block;height: 259px;}
+.bt-2{font-size: 2.125em;color: #333333;line-height: 94px;padding-left:20px;background-color: #f8f8f8;}
+.xm{float: left;font-size: 1.625em;color: #666666;margin-left: 20px;margin-top: 35px;}
+.xm-nr{float:left;font-size: 1.875em;color: #333333;margin-left: 30px;margin-top: 33px;}
+.dh{float: left;font-size: 1.625em;color: #666666;margin-left: 0px;margin-left: 20px;margin-top: 21px;}
+.dh-nr{float:left;font-size: 1.875em;color: #3F3F3F;margin-left: 30px;margin-top: 19px;}
+.content{height: 82px;}
+
+.mt-3{margin: 20px;background-color: #fff;border: 1px solid #e2e2e2;border-radius:5px;display: block;min-height: 482px;}
+.jd-name{margin-left: 20px;margin-top: 34px;font-size: 1.875em;color: #CBA962;}
+.jd-addr{margin-left: 20px;margin-top: 22px;font-size: 1.625em;color: #666666;}
+.location{max-height: 26px;width: auto;}
+.splitline{margin-left: 40px;margin-right: 20px;margin-top: 34px;height: 1px;background-color: #F2F2F2;}
+.xfbt-1{float: left;font-size: 1.625em;color: #666666;margin-left: 20px;margin-top: 22px;}
+.xfbt-2{float: left;font-size: 1.625em;color: #666666;margin-left: 20px;margin-top: 16px;}
+.xfbt-3{float: left;font-size: 1.625em;color: #666666;margin-left: 20px;margin-top: 4px;}
+.xfnr-1{float: left;font-size: 1.875em;color: #333333;margin-left: 10px;margin-top: 20px;}
+.xfnr-2{float: left;font-size: 1.875em;color: #333333;margin-left: 10px;margin-top: 14px;}
+.xfnr-3{float: left;font-size: 1.875em;color: #333333;margin-left: 10px;margin-top: 2px;}
+.content-3{height: 82px;display: flex;}
+
+.mt-4{margin: 20px;background-color: #fff;border: 1px solid #e2e2e2;border-radius:5px;display: block;height: 100px;}
+.bt-4{font-size: 2.125em;color: #333333;line-height: 100px;margin-left: 20px;float: left;}
+.nr-4{font-size: 1.875em;color: #CBA062;line-height: 100px;float: right;margin-right: 30px;}

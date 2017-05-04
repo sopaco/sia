@@ -1,0 +1,43 @@
+{
+  "name": "openshift-cartridge-nodejs-template",
+  "version": "1.0.1",
+  "description": "tentacle.svc@sopaco",
+  "private": true,
+  "main": "start.js",
+  "scripts": {
+    "start": "node --use_strict start.js",
+    "need-modify-dev-local": "NODE_CLUSTER_WORKERS=4 NODE_IP=100.81.140.154 NODE_PORT=8086 NODE_ENV=develop DATA_DIR=./ MYSQL_DB_USERNAME=root MYSQL_DB_PASSWORD=unikey MYSQL_DB_HOST=localhost node --use_strict start.js",
+    "need-modify-dist": "NODE_CLUSTER_WORKERS=8 NODE_IP=127.0.0.1 NODE_PORT=80 NODE_ENV=production DATA_DIR=./ MYSQL_DB_USERNAME=root MYSQL_DB_PASSWORD=unikey MYSQL_DB_HOST=localhost node --use_strict start.js"
+  },
+  "author": "dokhell",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "excel-export": "^0.5.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "iconv-lite": "^0.4.15",
+    "log4js": "^0.6.38",
+    "moment": "^2.15.1",
+    "multer": "^1.2.0",
+    "mysql": "^2.13.0",
+    "node-fetch": "^1.6.3",
+    "response-time": "^2.3.2",
+    "sequelize": "^3.30.2",
+    "session-file-store": "^1.0.0",
+    "tedious": "^1.14.0",
+    "validator": "^6.0.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-3"
+    ],
+    "plugins": []
+  }
+}

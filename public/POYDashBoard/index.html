@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- 引入 ECharts 文件 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <script src="//cdn.bootcss.com/echarts/3.3.1/echarts.js"></script>
+        <script src="//cdn.jsdelivr.net/superagent/0.18.0/superagent.min.js"></script>
+    </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="chartRtpo" style="width: 600px;height:400px;"></div>
+        
+        <div style="border-color: #f00f00;border-width:1px;">
+            <button onclick="loadRca('channel')">按项目渠道</button>
+            <button onclick="loadRca('projectType')">按承包类型</button>
+            <button onclick="loadRca('scale')">按资金规模</button>
+        </div>
+        <div id="chartRca" style="width: 600px;height:400px;"></div>
+
+        <div style="border-color: #f00f00;border-width:1px;">
+            <button onclick="load('month')">by month</button>
+            <button onclick="load('season')">by season</button>
+            <button onclick="load('year')">by year</button>
+        </div>
+        <div id="main" style="width: 600px;height:400px;"></div>
+        <script type="text/javascript">
+            var ww = 'kxVkMHOpQM9x0wom/P4uNqnSQD5pI/XbbXVBYD7iH1c=';//production
+            // var ww = 'kxVkMHOpQM9x0wom/U4uNqnSQD5pI/XbkXVBYD7iH1c=';//dev.log
+        </script>
+        <script type="text/javascript">
+            loadRtpo();
+            function loadRtpo() {
+                superagent.get('/api/poy/dashboard/rtpo?interval=12').set('WarrantWho', ww).end(function (err, res) {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    let myChart = echarts.init(document.getElementById('chartRtpo'));
+
+                    // 指定图表的配置项和数据
+                    let option = res.body.data.option;
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                })
+            }
+        </script>
+        <script type="text/javascript">
+            loadRca('scale');
+            function loadRca(sortBy) {
+                superagent.get('/api/poy/dashboard/rca?sortBy=' + sortBy).set('WarrantWho', ww).end(function (err, res) {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    let myChart = echarts.init(document.getElementById('chartRca'));
+
+                    // 指定图表的配置项和数据
+                    let option = res.body.data.option;
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                })
+            }
+        </script>
+        <script type="text/javascript">
+            load('month');
+            function load(interval) {
+                superagent.get('/api/poy/dashboard/rt?interval=' + interval).set('WarrantWho', ww).end(function (err, res) {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    let myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    let option = res.body.data.option;
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                })
+            }
+        </script>
+    </body>
+</html>

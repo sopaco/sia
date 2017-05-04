@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="css/css.css" rel="stylesheet" />
+    
+    <script src="js/jquery.min.js"></script>
+    <title>完善资料</title>
+    
+    <script type="text/javascript">
+        
+        var countdown=60; 
+        function settime(obj) { 
+            
+            if (countdown == 0) { 
+                obj.removeAttribute("disabled");    
+                obj.value="免费获取验证码"; 
+                countdown = 60; 
+                return;
+            } else { 
+                obj.setAttribute("disabled", true); 
+                obj.value="重新发送(" + countdown + ")"; 
+                countdown--; 
+            } 
+        setTimeout(function() { 
+            settime(obj) }
+            ,1000) 
+        }
+        
+   
+    function checkPhoneno(){
+      var obj = document.getElementById("w_phoneno_input");
+
+                 if(obj.value.length!=11) 
+                 { 
+                     alert('请输入11位手机号码！');
+                      return false; 
+                 }else{
+
+                  var ageReg = new RegExp(/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\d{8}$/); 
+                  if (!ageReg.test(obj.value)) {
+                    alert('请输入正确的手机号码');
+                     return false;
+                  }else{
+
+                    return true;
+ 
+                  }
+
+                 }
+
+                
+    }
+
+    function checkages(){
+      var obj = document.getElementById("age");
+                if(obj.value.length!=0){
+                  var ageReg = new RegExp(/^([0-9]|[0-9]{2}|100)$/); 
+                  if (!ageReg.test(obj.value)) {
+                    alert('请输入正确的年龄');
+                     return false;
+                  }else{
+
+                    return true;
+ 
+                  }
+                }else{
+                  alert('年龄为空');
+                   return false;
+
+
+                }
+    }
+
+    function checkName(){
+      var obj = document.getElementById("name");
+                if(obj.value.length!=0){
+                  var nameReg = new RegExp(/[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*/); 
+                  if (!nameReg.test(obj.value)) {
+                    alert('请输入正确的姓名');
+                     return false;
+                  }else{
+
+                    return true;
+ 
+                  }
+                }else{
+                  alert('姓名为空');
+                  return false;
+                }                
+          }
+
+
+
+    function checkEmail(){
+      var obj = document.getElementById("email");
+               if(obj.value.length!=0){
+                  var eReg = new RegExp(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/); 
+                  if (!eReg.test(obj.value)) {
+                    alert('请输入正确的邮箱');
+                     return false;
+                  }else{
+
+                    return true;
+ 
+                  }
+                }else{
+                  alert('邮箱为空');
+                   return false;               
+                }
+      }
+
+   function checkaddr(){
+      var obj = document.getElementById("addr");
+                if(obj.value.length!=0){
+
+                    return true;
+
+                }else{
+                 alert('工作单位为空');
+                  return false;
+                }
+      }
+
+
+    function get_onclick(){
+
+      if (!this.checkName()) {
+
+        return
+      };
+
+      if (!this.checkages()) {
+
+        return
+      };
+
+      if (!this.checkaddr()) {
+
+        return
+      };
+
+      if (!this.checkEmail()) {
+
+        return
+      };
+
+      if (!this.checkPhoneno()) {
+
+        return
+      };
+
+    }        
+    </script>
+</head>
+<body style="background:#f4f4f4;"> 
+    <div id="base_div">
+        <div id = "w_header_div">
+            <div id = "w_title_div">完善信息</div>
+            <div id = "w_img_div"> <img src="/images/coupon/w_head.png"/></div>
+            <div id = "w_subtitle_div">领券前先完善您的个人资料</div>
+        </div>
+        <div id = "w_middle_div">
+            <div>
+            <span class="w_span">姓名：</span><input type="text" class="w_middle_input" id="name" />
+            <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="95%" color=#DDDDDD SIZE=1>
+        </div>
+        <div>
+            <span class = "w_span">性别：</span>
+            <input type="radio" name="sex"/><span style="font-size:15px">男</span>
+            <input style = "margin-left:30px" type="radio" checked="checked"  name="sex"/><span style="font-size:15px">女</span>
+            <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="95%" color=#DDDDDD SIZE=1>
+        </div>
+        <div>
+            <span class = "w_span">年龄：</span><input type="text" class="w_middle_input" id="age"/>
+            <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="95%" color=#DDDDDD SIZE=1>
+        </div>
+        <div>
+            <span class = "w_span">工作单位：</span><input type="text" class="w_middle_input long_input" id="addr"/>
+            <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="95%" color=#DDDDDD SIZE=1>
+        </div>
+        <div>
+            <span class = "w_span">邮箱：</span><input type="email" class="w_middle_input long_input" id="email"/>
+            <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="95%" color=#DDDDDD SIZE=1>
+        </div>
+        <div>
+            <span class = "w_span">手机号：</span><input type="text" class="w_middle_input short_input" id="w_phoneno_input"/>
+            <!-- <input type="button" id = "w_span_code" value="免费获取验证码" onclick="sendMsg(this)"/> -->
+            <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="95%" color=#DDDDDD SIZE=1>
+        </div>
+
+        </div>
+    <div class="w_footer_div">
+      <div class="get_div" onclick="get_onclick()">
+        <div>立即领取！</div> 
+      </div>
+    </div>
+    </div>
+</body>
+</html>

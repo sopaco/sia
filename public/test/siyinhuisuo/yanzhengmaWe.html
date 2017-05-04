@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link type="text/css" href="css/css.css" rel="stylesheet" />
+  <title>已领取</title>
+  <script type="text/javascript">
+  var clock = '';
+  var nums = 60;
+  var btn;
+  function sendCode(thisBtn) { 
+    btn = thisBtn;
+    btn.disabled = true; //将按钮置为不可点击
+    btn.value = nums+'秒后重发';
+    clock = setInterval(doLoop, 1000); //一秒执行一次
+  }
+  function doLoop() {
+    nums--;
+    if(nums > 0){
+      btn.value = nums+'秒后重发';
+    }else{
+      clearInterval(clock); //清除js定时器
+      btn.disabled = false;
+      btn.value = '点击发送验证码';
+      nums = 10; //重置时间
+    }
+  }
+</script>
+</head>
+<body style="background:#f4f4f4;">
+  <div id="blank_div"></div>
+  <div id="base_div">
+    <div id="head_div">
+         <div class="font_div"><span style="color:RGBA(99, 181, 246, 1.00);">活动时间：</span><span style="font-size:24px;">2017年1月6日-12月30日</span></br>完善您的个人资料，可领取私银尊享体验券</div>
+  
+    </div>
+  </div>
+  <div class = "y_input_div">
+    <input placeholder="请输入手机号"type="text" class="y_input" />
+    <input type="button" class="y_button" value="点击发送验证码" onclick="sendCode(this)" />
+  </div>
+  <div class="download_div" >
+    <div>立即领取</div>
+  </div>
+
+    <div class = "s_ruler_title_div y_height">活动规则</div>
+  <div class="s_ruler_div">
+    <div>
+      <span>1.活动日期：2017.1.6～2017.12.30</span>
+      <span>2.本活动名额有限，先到先的</span>
+      <span>3.在法律允许的范围内，私银贵族对本次活动有最终解释权</span>
+      <span>4.如有其他问题，请致电私银贵族客服热线：400-6880-598</span>
+  </div>
+</body>
+
+</html>
